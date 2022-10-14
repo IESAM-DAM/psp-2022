@@ -34,5 +34,13 @@ class RetrofitApiClient {
         }
     }
 
-
+    fun getUser(userId: Int): UserApiModel?{
+        val userCall = apiEndPoints.getUser(userId)
+        val response = userCall.execute()
+        return if (response.isSuccessful){
+            response.body()
+        } else {
+            null
+        }
+    }
 }
